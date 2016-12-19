@@ -1,0 +1,54 @@
+num = 0
+
+While num < 100000
+	MoveTo 914,366 '保存为其他文件格式的坐标
+	LeftClick 1
+	KeyPress 9, 1
+	num = num + 1
+	SayString num
+	KeyPress 9, 1
+	num = num + 499
+	SayString num
+	KeyPress 9, 1
+	KeyPress 40, 1
+	KeyPress 9, 1
+	KeyPress 40, 3
+	KeyPress 9, 1
+	KeyPress 13, 1
+	'Delay 5000
+	colortag = True
+	While colortag
+		IfColor 1055, 621, "FFB879", 0 Then '
+			colortag = False
+
+		Else 
+			colortag = True
+			'GetColor=GetPixelColor(x,y)
+			Delay 100
+		End If
+
+	Wend
+	Delay 100
+	SayString "2006-scie-hkx-" '文件名前缀
+	SayString num - 499
+	SayString "-"
+	SayString num
+	KeyPress 13, 1'回车
+	'KeyDown 18,1
+	'KeyPress 9,1
+	'KeyUp 18, 1
+	Delay 100
+	KeyPress 9, 1
+	Delay 50
+	KeyPress 9, 1
+	KeyPress 13, 1
+	Delay 500
+	
+	'IfColor 165,273,"1C6BBA",0 Then
+    //颜色一样
+	'Else    
+    '	EndScript//颜色不一样
+	'End If
+	
+	
+Wend
