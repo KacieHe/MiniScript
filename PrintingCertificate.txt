@@ -1,0 +1,42 @@
+Sub 宏1()
+'
+' 宏1 宏
+'
+'
+strText = Array()
+
+
+For Each os In strText
+    With Selection.Find
+        .Text = os
+        .Replacement.Text = ""
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchByte = True
+        .MatchWildcards = False
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+    End With
+    Selection.Find.Execute
+    
+    If Selection.Text = os Then
+        ActivePrinter = "\\168.160.23.221\HP LaserJet P2055d UPD PCL 5"
+        Application.PrintOut FileName:="", Range:=wdPrintCurrentPage, Item:= _
+            wdPrintDocumentWithMarkup, Copies:=1, Pages:="", PageType:= _
+            wdPrintAllPages, Collate:=True, Background:=True, PrintToFile:=False, _
+            PrintZoomColumn:=0, PrintZoomRow:=0, PrintZoomPaperWidth:=0, _
+            PrintZoomPaperHeight:=0
+        Debug.Print os & "打印成功！"
+    
+    Else
+        Debug.Print ">>>" & os & "未找到！"
+    End If
+
+Next
+
+
+
+End Sub
